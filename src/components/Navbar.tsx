@@ -71,7 +71,7 @@ function Navbar() {
                     <Link to="/webinar" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center" onClick={blocker}>Webinar</Link>
                     <Link to="/join_podcast" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center" onClick={blocker}>Join Podcast</Link>
                     <Link to="/watch_award_tv_show" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center" onClick={blocker}>Watch Award TV Show</Link>
-                    <Link to="//membership" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center">Join Our Team</Link>
+                    <Link to="/membership" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center">Join Our Team</Link>
                     <Link to="/meet-our-global-volunteer-team" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center" onClick={blocker}>Meet Our Global Volunteer Team</Link>
                 </div>
                 <div className="bg-[#0F0E0C] border-t border-b border-gray-700 px-20 py-7 h-12 flex items-center justify-center gap-15 px-15">
