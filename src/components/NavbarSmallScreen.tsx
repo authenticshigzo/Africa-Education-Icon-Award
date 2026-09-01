@@ -62,35 +62,36 @@ function NavbarSmallScreen() {
 
     return (
         <>
-            <div className="bg-[#EDAE1D] fixed top-0 left-0 w-full min-h-9 px-4 py-2 z-40 flex items-center justify-center">
+            <div className="fixed top-0 left-0 w-full z-50">
                 {isAnnouncementVisible && (
-                    <div className="flex items-center justify-center">
-                        <p className="message text-[#0F0E0C] font-semibold text-sm">
-                            <a className="text-[#0F0E0C] hover:text-[#0F0E0C] hover:underline hover:decoration-1 hover:underline-offset-4" href={messageIndex === 0 ? 'https://nesa.africa/education-enablers' : 'https://nesa.africa/events#gala-2026'}>
-                                {messages[messageIndex]}
-                            </a>
-                        </p>
-                        <img src={close} alt="Close" className="h-6 w-6 ml-3 p-1 cursor-pointer hover:bg-[#cba006] rounded" onClick={() => setIsAnnouncementVisible(false)} />
-                        
+                    <div className="bg-[#EDAE1D] w-full px-3 py-2">
+                        <div className="flex w-full items-center justify-between gap-2">
+                            <p className="message flex-1 text-[#0F0E0C] font-semibold text-xs sm:text-sm leading-tight text-center break-words">
+                                <a className="text-[#0F0E0C] hover:text-[#0F0E0C] hover:underline hover:decoration-1 hover:underline-offset-4" href={messageIndex === 0 ? 'https://nesa.africa/education-enablers' : 'https://nesa.africa/events#gala-2026'}>
+                                    {messages[messageIndex]}
+                                </a>
+                            </p>
+                            <img src={close} alt="Close" className="h-5 w-5 sm:h-6 sm:w-6 shrink-0 p-1 cursor-pointer hover:bg-[#cba006] rounded self-center" onClick={() => setIsAnnouncementVisible(false)} />
+                        </div>
                     </div>
                 )}
-            </div>
 
-            <div className="fixed top-9 left-0 w-full h-16 px-4 bg-[#0F0E0C] z-50 flex items-center justify-between">
-                <Link to="/" className="flex gap-2 items-center justify-center">
-                    <img src={nesa} alt="NESA Logo" className="h-10 w-10 object-contain" />
-                    <p className="sr-only">NESA-Africa</p>
-                </Link>
-                <div className="flex items-center justify-center gap-2">
-                    <Link to="/membership" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member Now!</Link>
-                    <img src={menu} alt="Menu" className="h-15 w-15 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" onClick={openSideMenu} />
+                <div className="w-full h-16 px-4 bg-[#0F0E0C] flex items-center justify-between">
+                    <Link to="/" className="flex gap-2 items-center justify-center">
+                        <img src={nesa} alt="NESA Logo" className="h-10 w-10 object-contain" />
+                        <p className="sr-only">NESA-Africa</p>
+                    </Link>
+                    <div className="flex items-center justify-center gap-2">
+                        <Link to="/membership" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member Now!</Link>
+                        <img src={menu} alt="Menu" className="h-15 w-15 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" onClick={openSideMenu} />
+                    </div>
                 </div>
             </div>
 
             {isSideMenuOpen && <div className="fixed top-0 right-0 h-screen w-[calc(100%-2rem)] max-w-[553px] overflow-y-auto bg-[#0F0E0C] px-4 py-4 whitespace-normal flex flex-col border-l border-[#EDAE1D] text-white shadow-2xl items-center justify-start z-[70]">
                 <div className="bg-[#0F0E0C] w-full px-4 py-4 min-h-16 flex border-b border-[#EDAE1D] items-center justify-between gap-2">
                     <p className="text-[#E8C468] font-bold text-lg font-['Fraunces']">NESA-Africa 2026</p>
-                    <img src={close} alt="Menu" className="hover:bg-[#E8C468] h-8 w-8 px-2 py2 object-contain cursor-pointer rounded-sm" onClick={closeSideMenu} />
+                    <img src={close} alt="Menu" className="bg-[#E8C468] hover:bg-[#EDAE1D] h-8 w-8 px-2 py2 object-contain cursor-pointer rounded-sm" onClick={closeSideMenu} />
                 </div>
 
                 <div className="bg-[#0F0E0C] w-full px-4 py-6 flex flex-col border-b border-[#EDAE1D] items-center justify-center">

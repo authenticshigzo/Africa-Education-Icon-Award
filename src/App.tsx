@@ -4,6 +4,7 @@ import NavbarSmallScreen from './components/NavbarSmallScreen';
 import NavbarMediumScreen from './components/NavbarMediumScreen';
 import Navbar from "./components/Navbar"
 import Body from "./components/Body"
+import NominatePage from "./NominatePage"
 import MembershipPage from "./MembershipPage"
 import "./App.css"
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route>
           <Route path="/" element={<Body />} />
           <Route path="/membership" element={<MembershipPage />} />
+          <Route path="/nominate" element={<NominatePage />} />
         </Route>
       </Routes>
     </>

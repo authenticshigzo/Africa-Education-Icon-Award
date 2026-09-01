@@ -84,8 +84,8 @@ function MembershipPage() {
     }
     return (
         <>
-            <div className="flex flex-col items-center w-full min-h-screen pt-32 justify-center bg-[#0F0E0C] text-white">
-                <h1 className="text-3xl text-[#EDAE1D] w-[50%] text-center justify-center font-bold">Welcome to the Membership Page!</h1>
+            <div className="flex flex-col items-center w-full min-h-screen pt-24 sm:pt-32 px-4 sm:px-6 justify-center bg-[#0F0E0C] text-white">
+                <h1 className="text-2xl sm:text-3xl text-[#EDAE1D] w-full max-w-xl text-center justify-center font-bold">Welcome to the Membership Page!</h1>
                 <div className="flex gap-4 mt-4">
                     <button type="button" onClick={() => switchAuthMode("signup")} className={authMode === "signup" ? "font-bold text-[#EDAE1D]" : "text-white"}>
                         Sign up
@@ -94,7 +94,7 @@ function MembershipPage() {
                         Sign in
                     </button>
                 </div>
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-[50%] mt-4 bg-[#2B2824] p-6 rounded-2xl">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-xl mt-4 bg-[#2B2824] p-4 sm:p-6 rounded-2xl">
                     {authMode === "signup" && <>
                         <label>First Name:</label>
                         <input type="text" value={firstName} onChange={(event) => setFirstName(event.target.value)} placeholder="Enter your First Name" className="border border-y border-x border-white rounded-lg p-2 bg-[#797e86]" />

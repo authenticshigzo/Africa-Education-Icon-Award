@@ -74,13 +74,13 @@ function Navbar() {
                     <Link to="/membership" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center">Join Our Team</Link>
                     <Link to="/meet-our-global-volunteer-team" className="text-white text-xs hover:text-[#EDAE1D] px-2 py-3 items-center justify-center" onClick={blocker}>Meet Our Global Volunteer Team</Link>
                 </div>
-                <div className="bg-[#0F0E0C] border-t border-b border-gray-700 px-20 py-7 h-12 flex items-center justify-center gap-15 px-15">
+                <div className="bg-[#0F0E0C] border-t border-b border-gray-700 px-20 py-7 h-12 flex items-center justify-center gap-5 px-20">
                     <Link to="/" className="flex gap-2 items-center justify-center">
                         <img src={nesa} alt="NESA Logo" className="h-10 w-10 object-contain" />
                         <p className="text-[#EDAE1D] text-2xl font-bold whitespace-nowrap">NESA-Africa</p>
 
                     </Link>
-                    <div className="text-white text-base font-semibold whitespace-nowrap px-2 flex items-center justify-center gap-2">
+                    <div className="text-white text-sm font-semibold whitespace-nowrap px-2 flex items-center justify-center gap-2">
                         <div className="relative" onMouseEnter={() => openMenu('about')} onMouseLeave={closeMenu}>
                             <Link to="/about" className=" hover:bg-[#3B301C] flex items-center justify-center gap-2 hover:text-[#EDAE1D] px-4 py-3 rounded" onClick={blocker}>About<img src={activeMenu === 'about' ? arrowup : arrowdown} alt={activeMenu === 'about' ? "Arrow Up" : "Arrow Down"} className="h-3 w-3 object-contain" /></Link>
                             <NavbarAboutDropDown isOpen={activeMenu === 'about'} onMouseEnter={() => openMenu('about')} />
@@ -106,9 +106,10 @@ function Navbar() {
                             <NavbarParticipateDropDown isOpen={activeMenu === 'participate'} onMouseEnter={() => openMenu('participate')} />
                         </div>
                     </div>
-                    <div className="flex gap-4 whitespace-nowrap items-center justify-center gap-2">
+                    <div className="flex gap-4 whitespace-nowrap items-center justify-center">
                         <img src={search} alt="Search" className="h-8 w-8 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" />
-                        <Link to="/membership" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member Now!</Link>
+                        <Link to="/nominate" className="bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Nominate Now</Link>
+                        <Link to="/membership" className="bg-[#0F0E0C] flex border border-x border-y border-[#EDAE1D] text-[#EDAE1D] font-normal items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member Now</Link>
                         <div className="text-white flex items-center justify-center gap-2 hover:bg-[#3B301C] px-6 py-3 rounded-3">
                             <img src={globe} alt="Globe" className="h-5 w-5 object-contain cursor-pointer items-center justify-center gap-2" />
                             <p className="text-xs">GB</p>
