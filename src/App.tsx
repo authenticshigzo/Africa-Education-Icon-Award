@@ -6,7 +6,10 @@ import Navbar from "./components/Navbar"
 import Body from "./components/Body"
 import NominatePage from "./NominatePage"
 import MembershipPage from "./MembershipPage"
+import NominateTier1 from "./NominateTier1"
 import "./App.css"
+
+
 function App() {
   const [screenWidth, setScreenWidth] = useState(window.innerWidth)
 
@@ -37,6 +40,7 @@ function App() {
           <Route path="/" element={<Body />} />
           <Route path="/membership" element={<MembershipPage />} />
           <Route path="/nominate" element={<NominatePage />} />
+          <Route path="/nominate/:tier" element={<NominateTier1 />} />
         </Route>
       </Routes>
     </>

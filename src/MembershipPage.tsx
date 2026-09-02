@@ -60,6 +60,7 @@ function MembershipPage() {
                 }
 
                 localStorage.setItem("demoAccount", JSON.stringify(account))
+                window.dispatchEvent(new CustomEvent("member-signed-in", { detail: { name: `${firstName} ${lastName}`.trim() } }))
                 setStatus("success")
                 return
             }
@@ -70,6 +71,7 @@ function MembershipPage() {
                 : null
 
             if (account?.email === email && account.password === password) {
+                window.dispatchEvent(new CustomEvent("member-signed-in", { detail: { name: `${account.firstName} ${account.lastName}`.trim() } }))
                 setStatus("success")
             } else {
                 setStatus("declined")
@@ -147,6 +149,16 @@ function MembershipPage() {
 
                 {status === "expired" && (
                     <p className="text-yellow-400">Your session has expired.</p>
+                )}
+                {status !== "idle" && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/75 px-4" role="dialog" aria-live="polite" aria-modal="true">
+                        <div className={`w-full max-w-md rounded-2xl border p-8 text-center shadow-2xl ${status === "declined" ? "border-red-400 bg-[#211515]" : status === "loading" || status === "expired" ? "border-[#EDAE1D] bg-[#211e16]" : "border-green-400 bg-[#142116]"}`}>
+                            <p className={`text-xl font-bold ${status === "declined" ? "text-red-400" : status === "loading" || status === "expired" ? "text-[#EDAE1D]" : "text-green-400"}`}>
+                                {status === "loading" ? "Loading..." : status === "success" ? (authMode === "signup" ? "You have successfully signed up." : "You have successfully signed in.") : status === "declined" ? "Sign in declined. Please check your details." : "Your session has expired."}
+                            </p>
+                            {status !== "loading" && <button type="button" onClick={() => setStatus("idle")} className="mt-6 rounded-lg bg-[#EDAE1D] px-6 py-3 font-bold text-black">Close</button>}
+                        </div>
+                    </div>
                 )}
             </div>
         </>

@@ -30,6 +30,7 @@ function NavbarMediumScreen() {
     const [messageIndex, setMessageIndex] = useState(0)
     const [isAnnouncementVisible, setIsAnnouncementVisible] = useState(true)
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false)
+    const [memberName, setMemberName] = useState("")
     const closeMenuTimeout = useRef<number | undefined>(undefined)
 
     const openMenu = (menu: string) => {
@@ -44,11 +45,21 @@ function NavbarMediumScreen() {
     }
 
     useEffect(() => {
+        const savedAccount = localStorage.getItem("demoAccount")
+        if (savedAccount) {
+            const account = JSON.parse(savedAccount) as { firstName?: string; lastName?: string }
+            setMemberName(`${account.firstName || ""} ${account.lastName || ""}`.trim())
+        }
+        const handleMemberSignedIn = (event: Event) => setMemberName((event as CustomEvent<{ name: string }>).detail.name)
+        window.addEventListener("member-signed-in", handleMemberSignedIn)
         const intervalId = window.setInterval(() => {
             setMessageIndex((currentIndex) => (currentIndex + 1) % messages.length)
         }, 5000)
 
-        return () => window.clearInterval(intervalId)
+        return () => {
+            window.clearInterval(intervalId)
+            window.removeEventListener("member-signed-in", handleMemberSignedIn)
+        }
     }, [])
 
     const openSideMenu = () => {
@@ -81,7 +92,8 @@ function NavbarMediumScreen() {
                     <p className="sr-only">NESA-Africa</p>
                 </Link>
                 <div className="flex items-center justify-center gap-2">
-                    <Link to="/membership" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member Now!</Link>
+                    <Link to="/nominate" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Nominate Now</Link>
+                        <Link to="/membership" className="bg-[#0F0E0C] flex border border-x border-y border-[#EDAE1D] text-[#EDAE1D] font-normal items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member</Link>
                     <img src={menu} alt="Menu" className="h-8 w-8 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" onClick={openSideMenu} />
                 </div>
             </div>
@@ -144,7 +156,7 @@ function NavbarMediumScreen() {
                     <div className="w-full flex flex-col gap-4 items-center justify-center py-4">
                         <img src={globe} alt="Globe" className=" h-5 sm:w-full object-contain cursor-pointer hover:bg-[#3B301C] px-6 py-3 rounded-3 items-center justify-center gap-2" />
                         <img src={profile} alt="Profile" className="h-5 w-5 object-contain cursor-pointer" />
-                        <Link to="/membership" className="text-white hover:text-[#EDAE1D] cursor-pointer">Sign In</Link>
+                        <Link to="/membership" title={memberName || "Sign In"} className="max-w-20 truncate text-white hover:text-[#EDAE1D] cursor-pointer">{memberName.split(" ")[0] || "Sign In"}</Link>
                     </div>
 
                 </div>
