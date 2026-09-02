@@ -71,6 +71,12 @@ function NavbarMediumScreen() {
         setActiveMenu(null)
     }
 
+    const handleSignOut = () => {
+        localStorage.removeItem("demoAccount")
+        setMemberName("")
+        window.dispatchEvent(new Event("member-signed-out"))
+    }
+
     return (
         <>
             <div className="fixed top-0 left-0 w-full z-40 flex items-center justify-center">
@@ -156,7 +162,7 @@ function NavbarMediumScreen() {
                     <div className="w-full flex flex-col gap-4 items-center justify-center py-4">
                         <img src={globe} alt="Globe" className=" h-5 sm:w-full object-contain cursor-pointer hover:bg-[#3B301C] px-6 py-3 rounded-3 items-center justify-center gap-2" />
                         <img src={profile} alt="Profile" className="h-5 w-5 object-contain cursor-pointer" />
-                        <Link to="/membership" title={memberName || "Sign In"} className="max-w-20 truncate text-white hover:text-[#EDAE1D] cursor-pointer">{memberName.split(" ")[0] || "Sign In"}</Link>
+                        {memberName ? <button type="button" title="Sign out" onClick={handleSignOut} className="max-w-20 truncate text-white hover:text-[#EDAE1D] cursor-pointer">{memberName.split(" ")[0]}</button> : <Link to="/membership" className="text-white hover:text-[#EDAE1D] cursor-pointer">Sign In</Link>}
                     </div>
 
                 </div>

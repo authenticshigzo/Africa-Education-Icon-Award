@@ -41,6 +41,12 @@ function Navbar() {
         closeMenuTimeout.current = window.setTimeout(() => setActiveMenu(null), 700)
     }
 
+    const handleSignOut = () => {
+        localStorage.removeItem("demoAccount")
+        setMemberName("")
+        window.dispatchEvent(new Event("member-signed-out"))
+    }
+
     useEffect(() => {
         const savedAccount = localStorage.getItem("demoAccount")
         if (savedAccount) {
@@ -131,7 +137,7 @@ function Navbar() {
                             <p>ENG</p>
                         </div>
                         <img src={profile} alt="Profile" className="h-5 w-5 object-contain cursor-pointer" />
-                        <Link to="/membership" title={memberName || "Sign In"} className="max-w-20 truncate text-white hover:text-[#EDAE1D] cursor-pointer">{memberName.split(" ")[0] || "Sign In"}</Link>
+                        {memberName ? <button type="button" title="Sign out" onClick={handleSignOut} className="max-w-20 truncate text-white hover:text-[#EDAE1D] cursor-pointer">{memberName.split(" ")[0]}</button> : <Link to="/membership" className="text-white hover:text-[#EDAE1D] cursor-pointer">Sign In</Link>}
                     </div>
 
                 </div>

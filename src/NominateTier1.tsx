@@ -84,6 +84,15 @@ function NominateTier1() {
     useEffect(() => {
         window.scrollTo(0, 0)
 
+        const handleMemberSignedOut = () => {
+            setIsMember(false)
+            setMemberName("")
+            setMemberEmail("")
+            setMemberPassword("")
+        }
+        window.addEventListener("member-signed-out", handleMemberSignedOut)
+
+        return () => window.removeEventListener("member-signed-out", handleMemberSignedOut)
     }, [])
 
     function handleMemberSignIn(event: SubmitEvent<HTMLFormElement>) {
