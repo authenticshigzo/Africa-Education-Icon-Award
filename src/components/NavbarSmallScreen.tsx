@@ -93,15 +93,15 @@ function NavbarSmallScreen() {
                     </div>
                 )}
 
-                <div className="w-full h-16 px-4 bg-[#0F0E0C] flex items-center justify-between">
+                <div className="w-full h-16 px-2 sm:px-4 bg-[#0F0E0C] flex items-center justify-between">
                     <Link to="/" className="flex gap-2 items-center justify-center">
                         <img src={nesa} alt="NESA Logo" className="h-10 w-10 object-contain" />
                         <p className="sr-only">NESA-Africa</p>
                     </Link>
-                    <div className="flex items-center justify-center gap-2">
-                        <Link to="/nominate" className=" bg-[#EDAE1D] text-black flex items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Nominate Now</Link>
-                        <Link to="/membership" className="bg-[#0F0E0C] flex border border-x border-y border-[#EDAE1D] text-[#EDAE1D] font-normal items-center justify-center gap-2 hover:scale-105 px-4 py-3 rounded">Become A Member</Link>
-                        <img src={menu} alt="Menu" className="h-15 w-15 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" onClick={openSideMenu} />
+                    <div className="flex min-w-0 items-center justify-center gap-1.5 sm:gap-2">
+                        <Link to="/nominate" className="whitespace-nowrap rounded bg-[#EDAE1D] px-2.5 py-2 text-center text-xs font-semibold leading-tight text-black hover:scale-105 sm:px-3 sm:py-2.5 sm:text-sm">Nominate Now</Link>
+                        <Link to="/membership" className="whitespace-nowrap rounded border border-[#EDAE1D] bg-[#0F0E0C] px-2.5 py-2 text-center text-xs font-semibold leading-tight text-[#EDAE1D] hover:scale-105 sm:px-3 sm:py-2.5 sm:text-sm">Become A Member</Link>
+                        <img src={menu} alt="Menu" className="h-10 w-10 shrink-0 cursor-pointer rounded-sm object-contain p-1 hover:bg-[#3B301C] sm:h-12 sm:w-12 sm:p-2" onClick={openSideMenu} />
                     </div>
                 </div>
             </div>
