@@ -29,6 +29,27 @@ The application is composed from a small set of focused components:
 - `src/components/Navbar*DropDown.tsx` contains the menu options for About, Icon, Recognition, Nominees, Education Impact, and Participate. The parent navbar controls which menu is open through the `isOpen` prop.
 - `src/MembershipPage.tsx` renders the membership sign-up/sign-in demonstration.
 
+## Nomination UI Flow
+
+The nomination flow is a frontend-only demonstration using synthetic data. It does not connect to Supabase, production authentication, production credentials, or live nomination data.
+
+Routes:
+
+- `/nominate` displays the four recognition-tier options.
+- `/nominate/tier1` opens Lifetime Achievement Recognition.
+- `/nominate/tier2` opens Influencer Education Impact Recognition.
+- `/nominate/tier3` opens Platinum Certificates of Recognition.
+- `/nominate/tier4` opens Gold-Blue Garnet Recognition.
+
+The tier routes share the nomination form implementation in `src/NominateTier1.tsx`. Categories are defined as local mock data, while submitted demo nominations are stored in `localStorage` under `nominations`.
+
+The flow includes these UI states:
+
+- **Loading:** Sign-in and nomination submission show a loading dialog and disable the active action to prevent duplicate submissions.
+- **Empty:** A tier with no configured mock categories displays an explicit empty message and disables submission.
+- **Error:** Missing required fields show validation feedback, and invalid demo membership details show a declined sign-in state.
+- **Success:** Successful demo sign-in and nomination submission show confirmation feedback. Submitted form fields are cleared after a successful nomination.
+
 ## State and Data Flow
 
 `App` stores the current `window.innerWidth` in state and updates it through a resize listener. That state determines which navbar is rendered. The route content remains separate from the navigation.
