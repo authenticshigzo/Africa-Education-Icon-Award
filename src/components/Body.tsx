@@ -27,7 +27,7 @@ function Body() {
                         </span>
                     </p>
                     <div className="z-10 flex w-full max-w-[700px] flex-col items-start justify-center gap-4 sm:flex-row sm:items-center lg:justify-start">
-                        <Link to="/about" onClick={blocker} className="flex min-h-16 w-full max-w-[360px] items-center justify-center gap-2 rounded bg-[#EDAE1D] px-4 py-3 text-center text-black hover:scale-102">Nominate an Education Enabler</Link>
+                        <Link to="/nominate" className="flex min-h-16 w-full max-w-[360px] items-center justify-center gap-2 rounded bg-[#EDAE1D] px-4 py-3 text-center text-black hover:scale-102">Nominate an Education Enabler</Link>
                         <Link to="/about" onClick={blocker} className="flex min-h-16 w-full max-w-[325px] items-center justify-center gap-2 rounded border-y border-x border-white bg-[#0F0E0C] px-4 py-3 text-center text-white hover:scale-102">Explore Existing Nominees <img src={arrow} alt="Arrow" className="w-5 h-5" /></Link>
                     </div>
                 </div>

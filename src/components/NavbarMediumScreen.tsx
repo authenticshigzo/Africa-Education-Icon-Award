@@ -113,7 +113,7 @@ function NavbarMediumScreen() {
                 <div className="bg-[#0F0E0C] w-full px-4 py-6 flex flex-col border-b border-[#EDAE1D] items-center justify-center">
                     <img src={search} alt="Search" className="bg-[#0F0E0C] h-8 w-8 px-2 py2 object-contain cursor-pointer rounded-sm hover:bg-[#3B301C]" />
                     <div className="w-full flex flex-col items-stretch justify-center gap-3 z-10">
-                        <Link to="/about" onClick={blocker} className="bg-[#EDAE1D] text-black flex items-center justify-center gap-2 px-4 py-3 rounded">Nominate an Education Enabler</Link>
+                        <Link to="/nominate" className="bg-[#EDAE1D] text-black flex items-center justify-center gap-2 px-4 py-3 rounded">Nominate an Education Enabler</Link>
                         <Link to="/about" onClick={blocker} className="bg-[#0F0E0C] text-white border-y border-x border-white flex items-center justify-center gap-2 px-4 py-3 rounded">Explore Existing Nominees <img src={arrow} alt="Arrow" className="w-5 h-5" /></Link>
                     </div>
                 </div>

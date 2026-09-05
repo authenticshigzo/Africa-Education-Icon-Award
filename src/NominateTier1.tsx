@@ -63,6 +63,7 @@ function getSavedMemberAccount() {
 function NominateTier1() {
     const { tier: tierParam } = useParams<{ tier: string }>()
     const routeTier: Tier = tierParam === "tier2" || tierParam === "tier3" || tierParam === "tier4" ? tierParam : "tier1"
+    const availableCategories = categories[routeTier]
     const navigate = useNavigate()
     const savedAccount = getSavedMemberAccount()
     const savedMemberName = `${savedAccount?.firstName || ""} ${savedAccount?.lastName || ""}`.trim() || "Member"
@@ -179,7 +180,7 @@ function NominateTier1() {
                     <input id="member-email" type="email" required value={memberEmail} onChange={(event) => setMemberEmail(event.target.value)} className={inputClass} placeholder="Enter your membership email" />
                     <label htmlFor="member-password">Password</label>
                     <input id="member-password" type="password" required value={memberPassword} onChange={(event) => setMemberPassword(event.target.value)} className={inputClass} placeholder="Enter your password" />
-                    <button type="submit" className="bg-[#EDAE1D] text-black font-bold py-3 px-4 rounded-lg">Sign in to nominate</button>
+                    <button type="submit" disabled={status === "loading"} className="bg-[#EDAE1D] text-black font-bold py-3 px-4 rounded-lg disabled:cursor-not-allowed disabled:opacity-60">{status === "loading" ? "Signing in..." : "Sign in to nominate"}</button>
                 </form>
             ) : (
                 <form onSubmit={handleNominationSubmit} className="flex flex-col gap-4 w-full max-w-xl mt-8 bg-[#2B2824] p-5 sm:p-7 rounded-2xl">
@@ -197,11 +198,17 @@ function NominateTier1() {
                         {Object.entries(tierLabels).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
                     </select>
                     <label htmlFor="category">Category</label>
-                    <select id="category" required value={category} onChange={(event) => setCategory(event.target.value)} className={inputClass}>
-                        <option value="">Choose a category</option>
-                        {categories[routeTier].map((option) => <option key={option} value={option}>{option}</option>)}
-                    </select>
-                    <button type="submit" className="bg-[#EDAE1D] text-black font-bold py-3 px-4 rounded-lg">Submit nomination</button>
+                    {availableCategories.length > 0 ? (
+                        <select id="category" required value={category} onChange={(event) => setCategory(event.target.value)} className={inputClass}>
+                            <option value="">Choose a category</option>
+                            {availableCategories.map((option) => <option key={option} value={option}>{option}</option>)}
+                        </select>
+                    ) : (
+                        <div className="rounded-lg border border-dashed border-[#E8C468] px-4 py-6 text-center text-[#E8C468]" role="status">
+                            No categories are currently available for this recognition tier.
+                        </div>
+                    )}
+                    <button type="submit" disabled={status === "loading" || availableCategories.length === 0} className="bg-[#EDAE1D] text-black font-bold py-3 px-4 rounded-lg disabled:cursor-not-allowed disabled:opacity-60">{status === "loading" ? "Submitting..." : "Submit nomination"}</button>
                 </form>
             )}
 
